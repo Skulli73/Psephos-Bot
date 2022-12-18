@@ -1,6 +1,7 @@
 package io.github.skulli73.main.listeners;
 
 import com.google.gson.*;
+import io.github.skulli73.main.commands.StartElectionCommand;
 import io.github.skulli73.main.objects.CanUseBot;
 import org.javacord.api.event.interaction.SlashCommandCreateEvent;
 import org.javacord.api.interaction.SlashCommandInteraction;
@@ -57,7 +58,8 @@ public class SlashCommandListener implements SlashCommandCreateListener {
             }
         }
         if(lInteraction.getChannel().get().asTextChannel().get().asPrivateChannel().isPresent() ||lCanUseBot.serverCanUseBot(lInteraction.getServer().get())) {
-
+            if(lInteraction.getFullCommandName() == "start_election")
+                new StartElectionCommand(lInteraction);
         } else
             lInteraction.createImmediateResponder().append("This server cannot use the Psephos Bot").respond();
 
