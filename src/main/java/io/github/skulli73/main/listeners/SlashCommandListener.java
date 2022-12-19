@@ -58,7 +58,7 @@ public class SlashCommandListener implements SlashCommandCreateListener {
             }
         }
         if(lInteraction.getChannel().get().asTextChannel().get().asPrivateChannel().isPresent() ||lCanUseBot.serverCanUseBot(lInteraction.getServer().get())) {
-            if(lInteraction.getFullCommandName() == "start_election")
+            if(lInteraction.getCommandName().equals("start_election"))
                 new StartElectionCommand(lInteraction);
         } else
             lInteraction.createImmediateResponder().append("This server cannot use the Psephos Bot").respond();
