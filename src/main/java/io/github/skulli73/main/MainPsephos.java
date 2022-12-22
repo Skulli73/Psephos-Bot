@@ -2,6 +2,8 @@ package io.github.skulli73.main;
 
 
 import com.google.gson.*;
+import io.github.skulli73.main.listeners.MessageComponentListener;
+import io.github.skulli73.main.listeners.ModalListener;
 import io.github.skulli73.main.listeners.SlashCommandListener;
 import io.github.skulli73.main.managers.SlashCommandManager;
 import io.github.skulli73.main.objects.Ballot;
@@ -11,6 +13,7 @@ import io.github.skulli73.main.objects.electoralMethods.ElectoralMethod;
 import org.javacord.api.DiscordApi;
 import org.javacord.api.DiscordApiBuilder;
 import org.javacord.api.entity.permission.Permissions;
+import org.javacord.api.interaction.MessageComponentInteraction;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -22,6 +25,9 @@ public class MainPsephos {
     public static String        path = System.getProperty("user.dir") + "\\src\\main\\java\\io\\github\\skulli73\\main\\";
     public static DiscordApi    discordApi;
     public static SlashCommandListener slashCommandListener;
+
+    public static MessageComponentListener messageComponentListener;
+    public static ModalListener modalListener;
 
     public static HashMap<Integer, Election> elections;
     public static void main(String[]args) {
@@ -41,8 +47,12 @@ public class MainPsephos {
         new SlashCommandManager(discordApi);
 
         slashCommandListener = new SlashCommandListener();
+        messageComponentListener = new MessageComponentListener();
+        modalListener = new ModalListener();
 
         discordApi.addSlashCommandCreateListener(slashCommandListener);
+        discordApi.addMessageComponentCreateListener(messageComponentListener);
+        discordApi.addModalSubmitListener(modalListener);
 
         System.out.println("Invite Link: " + discordApi.createBotInvite(Permissions.fromBitmask(8)));
     }
@@ -93,6 +103,10 @@ public class MainPsephos {
                         lElection.ballots.add(lBallot);
                         lElection.candidates.add(lJsonElement.getAsString());
                     }
+                    if(lJsonObject.get("message") != null)
+                        lElection.message = lJsonObject.get("message").getAsLong();
+                    if(lJsonObject.get("channel") != null)
+                        lElection.channel = lJsonObject.get("channel").getAsLong();
                     elections.put(Integer.valueOf(lEntry.getKey()), lElection);
                 }
             } catch (FileNotFoundException | ClassNotFoundException e) {

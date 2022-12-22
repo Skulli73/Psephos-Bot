@@ -5,21 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="65d8bea3-32e9-44d8-b959-1ee696fd6ea9" name="Changes" comment="Created the basic &quot;StartElectionCommand&quot; class">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/io/github/skulli73/main/commands/StartElectionCommands/AbstractElectionCommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/io/github/skulli73/main/commands/StartElectionCommands/FPTPElectionCommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/io/github/skulli73/main/objects/Ballot.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/io/github/skulli73/main/objects/Election.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/io/github/skulli73/main/objects/Vote.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/io/github/skulli73/main/objects/electoralMethods/ElectoralMethod.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/io/github/skulli73/main/objects/electoralMethods/firstPastThePost.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/io/github/skulli73/main/listeners/MessageComponentListener.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/io/github/skulli73/main/listeners/ModalListener.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/io/github/skulli73/main/messageComponents/AddCandidateMessageComponent.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/io/github/skulli73/main/MainPsephos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/skulli73/main/MainPsephos.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/skulli73/main/commands/StartElectionCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/skulli73/main/commands/StartElectionCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/skulli73/main/listeners/SlashCommandListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/skulli73/main/listeners/SlashCommandListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/skulli73/main/managers/SlashCommandManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/skulli73/main/managers/SlashCommandManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/skulli73/main/commands/StartElectionCommands/AbstractElectionCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/skulli73/main/commands/StartElectionCommands/AbstractElectionCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/skulli73/main/commands/StartElectionCommands/FPTPElectionCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/skulli73/main/commands/StartElectionCommands/FPTPElectionCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/skulli73/main/objects/Election.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/skulli73/main/objects/Election.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/skulli73/main/objects/electoralMethods/ElectoralMethod.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/skulli73/main/objects/electoralMethods/ElectoralMethod.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/skulli73/main/objects/electoralMethods/firstPastThePost.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/skulli73/main/objects/electoralMethods/firstPastThePost.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,6 +25,23 @@
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
     </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="Psephos" type="f1a62948:ProjectNode" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">

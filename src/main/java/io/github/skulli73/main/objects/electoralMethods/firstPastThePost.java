@@ -1,10 +1,17 @@
 package io.github.skulli73.main.objects.electoralMethods;
 
 import io.github.skulli73.main.objects.Ballot;
+import io.github.skulli73.main.objects.Election;
 import io.github.skulli73.main.objects.Vote;
+import org.javacord.api.entity.channel.TextChannel;
+import org.javacord.api.entity.message.Message;
+import org.javacord.api.entity.message.MessageBuilder;
+import org.javacord.api.entity.message.component.ActionRow;
+import org.javacord.api.entity.message.component.Button;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 public class firstPastThePost implements ElectoralMethod{
     String meta = "io.github.skulli73.main.objects.electoralMethods.firstPastThePost";
@@ -29,5 +36,10 @@ public class firstPastThePost implements ElectoralMethod{
             }
         }
         return lResults;
+    }
+
+    @Override
+    public String methodName() {
+        return "First Past the Post";
     }
 }
