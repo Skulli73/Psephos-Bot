@@ -1,5 +1,6 @@
 package io.github.skulli73.main.listeners;
 
+import io.github.skulli73.main.messageComponents.AbortElectionMessageComponent;
 import io.github.skulli73.main.messageComponents.AddCandidateMessageComponent;
 import org.javacord.api.event.interaction.MessageComponentCreateEvent;
 import org.javacord.api.interaction.MessageComponentInteraction;
@@ -14,6 +15,9 @@ public class MessageComponentListener implements MessageComponentCreateListener 
         MessageComponentInteraction lInteraction = event.getInteraction().asMessageComponentInteraction().get();
         if(lInteraction.getCustomId().charAt(0) == 'a') {
             new AddCandidateMessageComponent(lInteraction);
+        }
+        if(lInteraction.getCustomId().charAt(0) == 'd') {
+            new AbortElectionMessageComponent(lInteraction);
         }
     }
 }

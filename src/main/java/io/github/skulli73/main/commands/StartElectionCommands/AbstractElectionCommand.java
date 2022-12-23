@@ -24,6 +24,7 @@ public abstract class AbstractElectionCommand {
         Message lMessage = sendFirstMessage(lElection, pInteraction.getChannel().get());
         lElection.message = lMessage.getId();
         lElection.channel = lMessage.getChannel().getId();
+        lElection.creator = pInteraction.getUser().getId();
         elections.put(lId, lElection);
         saveElections();
     }

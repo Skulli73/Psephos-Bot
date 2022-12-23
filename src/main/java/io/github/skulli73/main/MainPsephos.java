@@ -107,6 +107,8 @@ public class MainPsephos {
                         lElection.message = lJsonObject.get("message").getAsLong();
                     if(lJsonObject.get("channel") != null)
                         lElection.channel = lJsonObject.get("channel").getAsLong();
+                    if(lJsonObject.get("creator") != null)
+                        lElection.creator = lJsonObject.get("creator").getAsLong();
                     elections.put(Integer.valueOf(lEntry.getKey()), lElection);
                 }
             } catch (FileNotFoundException | ClassNotFoundException e) {
