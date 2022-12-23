@@ -2,6 +2,7 @@ package io.github.skulli73.main.listeners;
 
 import io.github.skulli73.main.messageComponents.AbortElectionMessageComponent;
 import io.github.skulli73.main.messageComponents.AddCandidateMessageComponent;
+import io.github.skulli73.main.messageComponents.StartElectionMessageComponent;
 import org.javacord.api.event.interaction.MessageComponentCreateEvent;
 import org.javacord.api.interaction.MessageComponentInteraction;
 import org.javacord.api.interaction.SlashCommandInteraction;
@@ -18,6 +19,9 @@ public class MessageComponentListener implements MessageComponentCreateListener 
         }
         if(lInteraction.getCustomId().charAt(0) == 'd') {
             new AbortElectionMessageComponent(lInteraction);
+        }
+        if(lInteraction.getCustomId().charAt(0) == 's') {
+            new StartElectionMessageComponent(lInteraction);
         }
     }
 }

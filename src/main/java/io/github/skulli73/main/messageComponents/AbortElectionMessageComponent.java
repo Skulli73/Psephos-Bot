@@ -21,6 +21,6 @@ public class AbortElectionMessageComponent extends AbstractElectionMessageCompon
         }
         elections.remove(lElection.id);
         saveElections();
-        pInteraction.createImmediateResponder().append(lElection.title + " was cancelled").respond();
+        pInteraction.createImmediateResponder().append(lElection.title + " was cancelled.").respond();
     }
 }

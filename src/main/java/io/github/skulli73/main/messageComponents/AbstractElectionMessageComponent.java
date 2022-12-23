@@ -17,7 +17,7 @@ public abstract class AbstractElectionMessageComponent {
             pInteraction.acknowledge();
             try {
                 pInteraction.getUser().openPrivateChannel().get().sendMessage("You are not the creator of this message.");
-            } catch (InterruptedException | ExecutionException e) {
+            } catch (Exception e) {
                 throw new RuntimeException(e);
             }
         }
