@@ -10,16 +10,12 @@ import org.javacord.api.interaction.SlashCommandOption;
 
 import java.util.Collections;
 
-import static io.github.skulli73.main.MainPsephos.elections;
-import static io.github.skulli73.main.MainPsephos.saveElections;
+import static io.github.skulli73.main.MainPsephos.*;
 
 public abstract class AbstractElectionCommand {
     public AbstractElectionCommand(SlashCommandInteraction pInteraction) {
-        int lId;
-        if(elections.size() > 0)
-            lId =Collections.max(elections.keySet())+1;
-        else
-            lId = 0;
+        int lId = nextElectionId;
+        nextElectionId++;
         Election lElection = getElection(pInteraction, lId);
         Message lMessage = sendFirstMessage(lElection, pInteraction.getChannel().get());
         lElection.message = lMessage.getId();

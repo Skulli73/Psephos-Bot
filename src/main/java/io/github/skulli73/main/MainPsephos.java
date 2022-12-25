@@ -30,12 +30,15 @@ public class MainPsephos {
     public static ModalListener modalListener;
 
     public static HashMap<Integer, Election> elections;
+
+    public static Integer nextElectionId;
     public static void main(String[]args) {
         new MainPsephos();
     }
     public MainPsephos() {
         loadBot();
         loadElections();
+        loadNextElection();
     }
     private void loadBot() {
         discordApi = new DiscordApiBuilder()
@@ -74,7 +77,29 @@ public class MainPsephos {
         }
         return token.toString();
     }
+    private void loadNextElection() {
+        File lFile = new File(path + "elections\\next_election.json");
+        if(lFile.exists()) {
+            StringBuilder lJsonBuilder = new StringBuilder();
+            Scanner lReader = null;
+            try {
+                lReader = new Scanner(lFile);
+            } catch (FileNotFoundException e) {
+                throw new RuntimeException(e);
+            }
+            while(lReader.hasNextLine()) {
+                lJsonBuilder.append(lReader.nextLine());
+            }
+            lReader.close();
+            nextElectionId = JsonParser.parseString(lJsonBuilder.toString()).getAsInt();
+        } else {
+            nextElectionId = 0;
+        }
+        saveNextElectionId();
+    }
     private void loadElections() {
+
+
         elections = new HashMap<Integer, Election>();
         File lFile = new File(path + "elections\\elections.json");
         if(lFile.exists()) {
@@ -134,6 +159,27 @@ public class MainPsephos {
         try {
             FileWriter lFileWriter = new FileWriter(lFile.getPath());
             String lJson = lGson.toJson(elections);
+            lFileWriter.write(lJson);
+            lFileWriter.close();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    public static void saveNextElectionId() {
+        Gson lGson = new GsonBuilder()
+                .setPrettyPrinting()
+                .create();
+        File lFile = new File(path + "elections\\next_election.json");
+        if(!lFile.exists()) {
+            try {
+                lFile.createNewFile();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        try {
+            FileWriter lFileWriter = new FileWriter(lFile.getPath());
+            String lJson = lGson.toJson(nextElectionId);
             lFileWriter.write(lJson);
             lFileWriter.close();
         } catch (IOException e) {
