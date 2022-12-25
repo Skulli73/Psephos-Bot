@@ -20,6 +20,7 @@ public class Election {
     public long             message;
     public long             channel;
     public long             creator;
+    public List<Voter>      voters;
 
     public Election(String pTitle, int pId, ElectoralMethod pElectoralMethod, long pRoleId) {
         id              = pId;
@@ -28,6 +29,7 @@ public class Election {
         ballots         = new LinkedList<>();
         electoralMethod = pElectoralMethod;
         roleId          = pRoleId;
+        voters          = new LinkedList<>();
     }
 
     public void updateMessage() {

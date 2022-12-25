@@ -16,6 +16,7 @@ public abstract class AbstractElectionCommand {
     public AbstractElectionCommand(SlashCommandInteraction pInteraction) {
         int lId = nextElectionId;
         nextElectionId++;
+        saveNextElectionId();
         Election lElection = getElection(pInteraction, lId);
         Message lMessage = sendFirstMessage(lElection, pInteraction.getChannel().get());
         lElection.message = lMessage.getId();

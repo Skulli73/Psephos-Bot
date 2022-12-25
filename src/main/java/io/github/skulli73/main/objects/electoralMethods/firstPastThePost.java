@@ -3,6 +3,7 @@ package io.github.skulli73.main.objects.electoralMethods;
 import io.github.skulli73.main.objects.Ballot;
 import io.github.skulli73.main.objects.Election;
 import io.github.skulli73.main.objects.Vote;
+import io.github.skulli73.main.objects.Voter;
 import org.javacord.api.entity.message.MessageBuilder;
 import org.javacord.api.entity.message.component.*;
 import org.javacord.api.interaction.MessageComponentInteraction;
@@ -10,6 +11,9 @@ import org.javacord.api.interaction.MessageComponentInteraction;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+
+import static io.github.skulli73.main.MainPsephos.elections;
+import static io.github.skulli73.main.MainPsephos.saveElections;
 
 public class firstPastThePost implements ElectoralMethod{
     String meta = "io.github.skulli73.main.objects.electoralMethods.firstPastThePost";
@@ -58,5 +62,27 @@ public class firstPastThePost implements ElectoralMethod{
     @Override
     public void onSelectCandidate(MessageComponentInteraction pInteraction) {
         pInteraction.acknowledge();
+        Election lElection = elections.get(Integer.parseInt(pInteraction.getCustomId().substring(1)));
+        int i = 0;
+        for(Voter lVoter: lElection.voters) {
+            if(lVoter.userId == pInteraction.getUser().getId()) {
+                lVoter.componentsSelection[0] = pInteraction.asSelectMenuInteraction().get().getChosenOptions().get(0).getLabel();
+                lElection.voters.set(i ,lVoter);
+            }
+            i++;
+        }
+        elections.put(lElection.id, lElection);
+        saveElections();
+    }
+
+    @Override
+    public Ballot handleBallot(MessageComponentInteraction pInteraction, Election pElection) {
+        List<Vote> lVotes = new LinkedList<>();
+        Voter lVoter = pElection.voters.stream().filter(c->c.userId == pInteraction.getUser().getId()).findFirst().orElse(null);
+        if(lVoter == null)
+            return null;
+        lVotes.add(new Vote(lVoter.componentsSelection[0], 1));
+        Ballot lBallot = new Ballot(lVotes, pInteraction.getUser().getId());
+        return lBallot;
     }
 }

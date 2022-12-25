@@ -9,6 +9,7 @@ import io.github.skulli73.main.managers.SlashCommandManager;
 import io.github.skulli73.main.objects.Ballot;
 import io.github.skulli73.main.objects.Election;
 import io.github.skulli73.main.objects.Vote;
+import io.github.skulli73.main.objects.Voter;
 import io.github.skulli73.main.objects.electoralMethods.ElectoralMethod;
 import org.javacord.api.DiscordApi;
 import org.javacord.api.DiscordApiBuilder;
@@ -126,7 +127,6 @@ public class MainPsephos {
                         }
                         Ballot lBallot = new Ballot(lVoteList, lJsonObject2.get("voterId").getAsLong());
                         lElection.ballots.add(lBallot);
-                        lElection.candidates.add(lJsonElement.getAsString());
                     }
                     if(lJsonObject.get("message") != null)
                         lElection.message = lJsonObject.get("message").getAsLong();
@@ -134,6 +134,18 @@ public class MainPsephos {
                         lElection.channel = lJsonObject.get("channel").getAsLong();
                     if(lJsonObject.get("creator") != null)
                         lElection.creator = lJsonObject.get("creator").getAsLong();
+                    for(JsonElement lJsonElement:lJsonObject.get("voters").getAsJsonArray()) {
+                        JsonObject lJsonObject2 = lJsonElement.getAsJsonObject();
+                        String[] lComponentSelection = new String[lJsonObject2.get("componentsSelection").getAsJsonArray().size()];
+                        int i = 0;
+                        for(JsonElement lJsonElement2: lJsonObject2.get("componentsSelection").getAsJsonArray()) {
+                            lComponentSelection[i] = lJsonElement2.getAsString();
+                            i++;
+                        }
+                        Voter lVoter = new Voter(lJsonObject2.get("userId").getAsLong(), lComponentSelection.length);
+                        lVoter.componentsSelection = lComponentSelection;
+                        lElection.voters.add(lVoter);
+                    }
                     elections.put(Integer.valueOf(lEntry.getKey()), lElection);
                 }
             } catch (FileNotFoundException | ClassNotFoundException e) {

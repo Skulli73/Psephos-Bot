@@ -30,4 +30,6 @@ public interface ElectoralMethod {
     public MessageBuilder getBallot(Election pElection);
 
     public void onSelectCandidate(MessageComponentInteraction pInteraction);
+
+    public Ballot handleBallot(MessageComponentInteraction pInteraction, Election pElection);
 }
