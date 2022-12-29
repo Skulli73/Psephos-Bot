@@ -1,5 +1,7 @@
 plugins {
     id 'java'
+    id 'application'
+    id 'com.github.johnrengelman.shadow' version '6.1.0'
 }
 
 group 'io.github.skulli73.main'
@@ -15,6 +17,17 @@ dependencies {
     implementation 'org.javacord:javacord:3.7.0'
     implementation 'com.google.code.gson:gson:2.10'
     compileOnly 'org.jetbrains:annotations:23.1.0'
+}
+
+application {
+    mainClassName = 'io.github.skulli73.main.MainPsephos'
+}
+
+shadowJar {
+    mergeServiceFiles()
+    manifest {
+        attributes 'Main-Class': mainClassName
+    }
 }
 
 test {

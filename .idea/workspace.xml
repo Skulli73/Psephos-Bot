@@ -4,21 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="65d8bea3-32e9-44d8-b959-1ee696fd6ea9" name="Changes" comment="FPTP now works">
-      <change afterPath="$PROJECT_DIR$/src/main/java/io/github/skulli73/main/commands/StartElectionCommands/IRVElectionCommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/io/github/skulli73/main/objects/electoralMethods/InstantRunoffVoting.java" afterDir="false" />
+    <list default="true" id="65d8bea3-32e9-44d8-b959-1ee696fd6ea9" name="Changes" comment="Added Instant Runoff Voting">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/io/github/skulli73/main/MainPsephos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/skulli73/main/MainPsephos.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/skulli73/main/commands/StartElectionCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/skulli73/main/commands/StartElectionCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/skulli73/main/commands/StartElectionCommands/AbstractElectionCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/skulli73/main/commands/StartElectionCommands/AbstractElectionCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/skulli73/main/commands/StartElectionCommands/FPTPElectionCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/skulli73/main/commands/StartElectionCommands/FPTPElectionCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/skulli73/main/listeners/ModalListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/skulli73/main/listeners/ModalListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/skulli73/main/managers/SlashCommandManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/skulli73/main/managers/SlashCommandManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/skulli73/main/messageComponents/EndElectionMessageComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/skulli73/main/messageComponents/EndElectionMessageComponent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/skulli73/main/messageComponents/SelectCandidateMessageComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/skulli73/main/messageComponents/SelectCandidateMessageComponent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/skulli73/main/messageComponents/StartElectionMessageComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/skulli73/main/messageComponents/StartElectionMessageComponent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/skulli73/main/objects/electoralMethods/ElectoralMethod.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/skulli73/main/objects/electoralMethods/ElectoralMethod.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/skulli73/main/objects/electoralMethods/firstPastThePost.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/skulli73/main/objects/electoralMethods/FirstPastThePost.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,6 +22,9 @@
   <component name="ExternalProjectsManager">
     <system id="GRADLE">
       <state>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
         <projects_view>
           <tree_state>
             <expand>
@@ -72,20 +64,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;last.edited.regexp&quot;: &quot;SampleText&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "last.edited.regexp": "SampleText",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="io.github.skulli73.main.objects" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Gradle.Psephos [shadowJar]">
     <configuration name="MainPsephos" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="io.github.skulli73.main.MainPsephos" />
       <module name="Psephos.main" />
@@ -93,6 +88,31 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Psephos [shadowJar]" type="GradleRunConfiguration" factoryName="Gradle" nameIsGenerated="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="shadowJar" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Application.MainPsephos" />
+      <item itemvalue="Gradle.Psephos [shadowJar]" />
+    </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -145,7 +165,14 @@
       <option name="project" value="LOCAL" />
       <updated>1671990669399</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Added Instant Runoff Voting">
+      <created>1672339235376</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1672339235376</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -166,7 +193,8 @@
     <MESSAGE value="Continued with the basics" />
     <MESSAGE value="idk what to write honestly" />
     <MESSAGE value="FPTP now works" />
-    <option name="LAST_COMMIT_MESSAGE" value="FPTP now works" />
+    <MESSAGE value="Added Instant Runoff Voting" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added Instant Runoff Voting" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

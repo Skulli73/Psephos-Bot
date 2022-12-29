@@ -23,7 +23,7 @@ import java.io.IOException;
 import java.util.*;
 
 public class MainPsephos {
-    public static String        path = System.getProperty("user.dir") + "\\src\\main\\java\\io\\github\\skulli73\\main\\";
+    public static String        path = "";
     public static DiscordApi    discordApi;
     public static SlashCommandListener slashCommandListener;
 
@@ -79,7 +79,7 @@ public class MainPsephos {
         return token.toString();
     }
     private void loadNextElection() {
-        File lFile = new File(path + "elections\\next_election.json");
+        File lFile = new File(path + "next_election.json");
         if(lFile.exists()) {
             StringBuilder lJsonBuilder = new StringBuilder();
             Scanner lReader = null;
@@ -102,7 +102,7 @@ public class MainPsephos {
 
 
         elections = new HashMap<Integer, Election>();
-        File lFile = new File(path + "elections\\elections.json");
+        File lFile = new File(path + "elections.json");
         if(lFile.exists()) {
             try {
                 StringBuilder lJsonBuilder = new StringBuilder();
@@ -163,7 +163,7 @@ public class MainPsephos {
         Gson lGson = new GsonBuilder()
                 .setPrettyPrinting()
                 .create();
-        File lFile = new File(path + "elections\\elections.json");
+        File lFile = new File(path + "elections.json");
         if(!lFile.exists()) {
             try {
                 lFile.createNewFile();
@@ -184,7 +184,7 @@ public class MainPsephos {
         Gson lGson = new GsonBuilder()
                 .setPrettyPrinting()
                 .create();
-        File lFile = new File(path + "elections\\next_election.json");
+        File lFile = new File(path + "next_election.json");
         if(!lFile.exists()) {
             try {
                 lFile.createNewFile();
