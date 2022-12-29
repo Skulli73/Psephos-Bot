@@ -4,18 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="65d8bea3-32e9-44d8-b959-1ee696fd6ea9" name="Changes" comment="idk what to write honestly">
-      <change afterPath="$PROJECT_DIR$/src/main/java/io/github/skulli73/main/messageComponents/EndElectionMessageComponent.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/io/github/skulli73/main/messageComponents/SubmitBallotMessageComponent.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/io/github/skulli73/main/objects/Voter.java" afterDir="false" />
+    <list default="true" id="65d8bea3-32e9-44d8-b959-1ee696fd6ea9" name="Changes" comment="FPTP now works">
+      <change afterPath="$PROJECT_DIR$/src/main/java/io/github/skulli73/main/commands/StartElectionCommands/IRVElectionCommand.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/io/github/skulli73/main/objects/electoralMethods/InstantRunoffVoting.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/io/github/skulli73/main/MainPsephos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/skulli73/main/MainPsephos.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/skulli73/main/commands/StartElectionCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/skulli73/main/commands/StartElectionCommand.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/io/github/skulli73/main/commands/StartElectionCommands/AbstractElectionCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/skulli73/main/commands/StartElectionCommands/AbstractElectionCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/skulli73/main/listeners/MessageComponentListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/skulli73/main/listeners/MessageComponentListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/skulli73/main/commands/StartElectionCommands/FPTPElectionCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/skulli73/main/commands/StartElectionCommands/FPTPElectionCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/skulli73/main/listeners/ModalListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/skulli73/main/listeners/ModalListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/skulli73/main/managers/SlashCommandManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/skulli73/main/managers/SlashCommandManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/skulli73/main/messageComponents/EndElectionMessageComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/skulli73/main/messageComponents/EndElectionMessageComponent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/skulli73/main/messageComponents/SelectCandidateMessageComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/skulli73/main/messageComponents/SelectCandidateMessageComponent.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/io/github/skulli73/main/messageComponents/StartElectionMessageComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/skulli73/main/messageComponents/StartElectionMessageComponent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/skulli73/main/objects/Election.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/skulli73/main/objects/Election.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/io/github/skulli73/main/objects/electoralMethods/ElectoralMethod.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/skulli73/main/objects/electoralMethods/ElectoralMethod.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/skulli73/main/objects/electoralMethods/firstPastThePost.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/skulli73/main/objects/electoralMethods/firstPastThePost.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/skulli73/main/objects/electoralMethods/firstPastThePost.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/skulli73/main/objects/electoralMethods/FirstPastThePost.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -135,7 +138,14 @@
       <option name="project" value="LOCAL" />
       <updated>1671977040219</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="FPTP now works">
+      <created>1671990669399</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1671990669399</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -155,7 +165,8 @@
     <MESSAGE value="Further continued the basics" />
     <MESSAGE value="Continued with the basics" />
     <MESSAGE value="idk what to write honestly" />
-    <option name="LAST_COMMIT_MESSAGE" value="idk what to write honestly" />
+    <MESSAGE value="FPTP now works" />
+    <option name="LAST_COMMIT_MESSAGE" value="FPTP now works" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -163,6 +174,10 @@
         <breakpoint enabled="true" type="java-exception">
           <properties class="java.lang.UnsupportedOperationException" package="java.lang" />
           <option name="timeStamp" value="1" />
+        </breakpoint>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.NullPointerException" package="java.lang" />
+          <option name="timeStamp" value="2" />
         </breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -14,8 +14,7 @@ import org.javacord.api.interaction.MessageComponentInteraction;
 import javax.xml.soap.Text;
 import java.util.concurrent.ExecutionException;
 
-import static io.github.skulli73.main.MainPsephos.discordApi;
-import static io.github.skulli73.main.MainPsephos.elections;
+import static io.github.skulli73.main.MainPsephos.*;
 
 public class StartElectionMessageComponent extends AbstractElectionMessageComponent{
     public StartElectionMessageComponent(MessageComponentInteraction pInteraction) {
@@ -59,7 +58,9 @@ public class StartElectionMessageComponent extends AbstractElectionMessageCompon
                 try{
                     PrivateChannel lDmChannel = lUser.openPrivateChannel().get();
                     lMessageBuilder.send(lDmChannel);
-                    lElection.voters.add(new Voter(lUser.getId(), lActionRow.getComponents().size()));
+                    lElection.voters.add(new Voter(lUser.getId(), lElection.electoralMethod.amountOfComponents(lElection)));
+                    elections.put(lElection.id, lElection);
+                    saveElections();
                 } catch(Exception e) {
                     pInteraction.getChannel().get().sendMessage("I could not message " + lUser.getMentionTag());
                 }

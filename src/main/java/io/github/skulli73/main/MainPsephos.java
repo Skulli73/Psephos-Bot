@@ -139,7 +139,10 @@ public class MainPsephos {
                         String[] lComponentSelection = new String[lJsonObject2.get("componentsSelection").getAsJsonArray().size()];
                         int i = 0;
                         for(JsonElement lJsonElement2: lJsonObject2.get("componentsSelection").getAsJsonArray()) {
-                            lComponentSelection[i] = lJsonElement2.getAsString();
+                            if(lJsonElement2.isJsonNull())
+                                lComponentSelection[i] = null;
+                            else
+                                lComponentSelection[i] = lJsonElement2.getAsString();
                             i++;
                         }
                         Voter lVoter = new Voter(lJsonObject2.get("userId").getAsLong(), lComponentSelection.length);

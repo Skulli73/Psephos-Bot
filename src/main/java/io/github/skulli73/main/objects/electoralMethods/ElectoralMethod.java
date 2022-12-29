@@ -11,7 +11,7 @@ import java.util.List;
 
 public interface ElectoralMethod {
 
-    public HashMap<String, Integer> calculateWinner(List<Ballot> pBallots, List<String> pCandidates, int pAmountSeats);
+    public EmbedBuilder calculateWinner(List<Ballot> pBallots, List<String> pCandidates, int pAmountSeats);
 
     public String methodName();
 
@@ -32,4 +32,6 @@ public interface ElectoralMethod {
     public void onSelectCandidate(MessageComponentInteraction pInteraction);
 
     public Ballot handleBallot(MessageComponentInteraction pInteraction, Election pElection);
+
+    public int amountOfComponents(Election pElection);
 }

@@ -17,7 +17,11 @@ public class ModalListener implements ModalSubmitListener {
         ModalInteraction lInteraction = event.getInteraction().asModalInteraction().get();
         if (lInteraction.getCustomId().startsWith("am")) {
             Election lElection = elections.get(Integer.parseInt(lInteraction.getCustomId().substring(2)));
-            lElection.candidates.add(lInteraction.getTextInputValueByCustomId("candidate").get());
+            String lCandidate = lInteraction.getTextInputValueByCustomId("candidate").get();
+            if(lElection.candidates.contains(lCandidate)) {
+                lInteraction.createImmediateResponder().append("You cannot have two candidates with the same name.").respond();
+            }
+            lElection.candidates.add(lCandidate);
             lElection.updateMessage();
             elections.put(lElection.id, lElection);
             saveElections();

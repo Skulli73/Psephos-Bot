@@ -7,7 +7,7 @@ import static io.github.skulli73.main.MainPsephos.elections;
 
 public class SelectCandidateMessageComponent {
     public SelectCandidateMessageComponent (MessageComponentInteraction pInteraction) {
-        int lElectionId = Integer.parseInt(pInteraction.getCustomId().substring(1));
+        int lElectionId = Integer.parseInt(pInteraction.getCustomId().split("_")[1]);
         if(elections.containsKey(lElectionId)) {
             Election lElection = elections.get(lElectionId);
             lElection.electoralMethod.onSelectCandidate(pInteraction);

@@ -6,24 +6,23 @@ import io.github.skulli73.main.objects.Vote;
 import io.github.skulli73.main.objects.Voter;
 import org.javacord.api.entity.message.MessageBuilder;
 import org.javacord.api.entity.message.component.*;
+import org.javacord.api.entity.message.embed.EmbedBuilder;
 import org.javacord.api.interaction.MessageComponentInteraction;
 
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 import static io.github.skulli73.main.MainPsephos.elections;
 import static io.github.skulli73.main.MainPsephos.saveElections;
 
-public class firstPastThePost implements ElectoralMethod{
-    String meta = "io.github.skulli73.main.objects.electoralMethods.firstPastThePost";
+public class FirstPastThePost implements ElectoralMethod{
+    String meta = "io.github.skulli73.main.objects.electoralMethods.FirstPastThePost";
 
-    public firstPastThePost() {
+    public FirstPastThePost() {
 
     }
 
     @Override
-    public HashMap<String, Integer> calculateWinner(List<Ballot> pBallots, List<String> pCandidates, int pAmountSeats) {
+    public EmbedBuilder calculateWinner(List<Ballot> pBallots, List<String> pCandidates, int pAmountSeats) {
         HashMap<String, Integer> lResults = new HashMap<>();
         for(String lCandidate: pCandidates) {
             lResults.put(lCandidate, 0);
@@ -37,7 +36,33 @@ public class firstPastThePost implements ElectoralMethod{
 
             }
         }
-        return lResults;
+
+        Object[] lCandidates = lResults.keySet().toArray();
+        Arrays.sort(lCandidates, Comparator.comparingInt(lResults::get));
+        Stack<Object> lStack =new Stack<>();
+        for(Object lObject:lCandidates) {
+            lStack.push(lObject);
+        }
+        int i = 0;
+        for(Object ignored:lCandidates) {
+            lCandidates[i] = lStack.pop();
+            i++;
+        }
+        EmbedBuilder lEmbedBuilder = new EmbedBuilder();
+        for(Object lObject:lCandidates) {
+            String lCandidate   = (String) lObject;
+            int lPercentage  = (int) (((double)lResults.get(lCandidate))/pBallots.size()*100);
+            StringBuilder lBar  = new StringBuilder();
+            int lAmountBar  = lPercentage/10;
+            for(int j = 0; j<10; j++) {
+                if(j<lAmountBar)
+                    lBar.append(":black_large_square:");
+                else
+                    lBar.append(":white_large_square:");
+            }
+            lEmbedBuilder.addField(lObject+ ": " +  lResults.get(lCandidate) + "  (" + lPercentage + "%"+ ")", lBar.toString());
+        }
+        return lEmbedBuilder;
     }
 
     @Override
@@ -53,7 +78,7 @@ public class firstPastThePost implements ElectoralMethod{
         }
         lMessageBuilder.addComponents(
                 ActionRow.of(
-                        SelectMenu.create("v" + pElection.id, "Your Vote", lSelectMenuOptions)
+                        SelectMenu.create("v_" + pElection.id, "Your Vote", lSelectMenuOptions)
                 )
         );
         return lMessageBuilder;
@@ -84,5 +109,8 @@ public class firstPastThePost implements ElectoralMethod{
         lVotes.add(new Vote(lVoter.componentsSelection[0], 1));
         Ballot lBallot = new Ballot(lVotes, pInteraction.getUser().getId());
         return lBallot;
+    }
+    public int amountOfComponents(Election pElection) {
+        return 1;
     }
 }
