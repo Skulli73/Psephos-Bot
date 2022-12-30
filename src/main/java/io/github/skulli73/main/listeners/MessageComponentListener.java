@@ -31,5 +31,8 @@ public class MessageComponentListener implements MessageComponentCreateListener 
         else if(lInteraction.getCustomId().charAt(0) == 'e') {
             new EndElectionMessageComponent(lInteraction);
         }
+        else if(lInteraction.getCustomId().charAt(0) == 'u') {
+            new VoteMessageComponent(lInteraction);
+        }
     }
 }

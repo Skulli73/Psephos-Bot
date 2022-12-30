@@ -10,8 +10,13 @@ import java.util.concurrent.ExecutionException;
 
 import static io.github.skulli73.main.MainPsephos.*;
 
-public class EndElectionMessageComponent {
+public class EndElectionMessageComponent extends AbstractElectionMessageComponent{
     public EndElectionMessageComponent(MessageComponentInteraction pInteraction) {
+        super(pInteraction);
+    }
+
+    @Override
+    void execute(MessageComponentInteraction pInteraction) {
         Election lElection                  = elections.get(Integer.parseInt(pInteraction.getCustomId().substring(1)));
         EmbedBuilder lEmbedBuilder          = lElection.electoralMethod.calculateWinner(lElection.ballots, lElection.candidates, 1);
         lEmbedBuilder.setTitle(lElection.title + " - Results");

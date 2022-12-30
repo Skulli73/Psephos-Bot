@@ -33,9 +33,11 @@ public class StartElectionMessageComponent extends AbstractElectionMessageCompon
             }
             try {
                 lElection.message = new MessageBuilder()
+                        .append(discordApi.getRoleById(lElection.roleId).get().getMentionTag())
                         .addEmbed(lElection.electoralMethod.genericEmbed(lElection))
                         .addComponents(
                                 ActionRow.of(
+                                        Button.success("u" + lElection.id, "Vote"),
                                         Button.danger("e" + lElection.id, "End Election")
                                 )
                         )
@@ -47,24 +49,7 @@ public class StartElectionMessageComponent extends AbstractElectionMessageCompon
             }
 
 
-            Role lRole = discordApi.getRoleById(lElection.roleId).get();
-            MessageBuilder lMessageBuilder = lElection.electoralMethod.getBallot(lElection);
-            lMessageBuilder.addEmbed(lElection.electoralMethod.genericEmbed(lElection));
-            ActionRow lActionRow = ActionRow.of(
-                    Button.success("b" + lElection.id, "Submit")
-            );
-            lMessageBuilder.addComponents(lActionRow);
-            for(User lUser: lRole.getUsers()) {
-                try{
-                    PrivateChannel lDmChannel = lUser.openPrivateChannel().get();
-                    lMessageBuilder.send(lDmChannel);
-                    lElection.voters.add(new Voter(lUser.getId(), lElection.electoralMethod.amountOfComponents(lElection)));
-                    elections.put(lElection.id, lElection);
-                    saveElections();
-                } catch(Exception e) {
-                    pInteraction.getChannel().get().sendMessage("I could not message " + lUser.getMentionTag());
-                }
-            }
+
         } else
             pInteraction.createImmediateResponder().append("You require at least one candidate to start an election.").respond();
     }

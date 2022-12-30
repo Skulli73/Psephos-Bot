@@ -11,6 +11,7 @@ import org.javacord.api.entity.message.component.SelectMenuOption;
 import org.javacord.api.entity.message.embed.EmbedBuilder;
 import org.javacord.api.interaction.MessageComponentInteraction;
 
+import java.net.BindException;
 import java.util.*;
 import java.util.stream.Stream;
 
@@ -79,7 +80,7 @@ public class InstantRunoffVoting implements ElectoralMethod{
                 Stream<String> lStream = pCandidates.stream().filter(c -> finalLResults.get(c) == lowestVotes);
                 boolean b = false;
                 if(lStream.count() == 1)
-                    lEliminated = lStream.findFirst().get();
+                    lEliminated = pCandidates.stream().filter(c -> finalLResults.get(c) == lowestVotes).findFirst().get();
                 else if(lPreviousResult != null){
                     HashMap<String, Integer> lPreviousResultsJustTiedCandidates = new HashMap<>();
                     for(String lKey:lPreviousResult.keySet()) {
@@ -95,7 +96,7 @@ public class InstantRunoffVoting implements ElectoralMethod{
                             lPreviousResultsJustTiedCandidates.remove(lKey);
                     }
 
-                    int lLowestLastResult = Collections.min(lPreviousResult.values());
+                    int lLowestLastResult = Collections.min(lPreviousResultsJustTiedCandidates.values());
                     Stream<String> lStream2 = lPreviousResultsJustTiedCandidates.keySet().stream().filter(c -> lPreviousResultsJustTiedCandidates.get(c) == lLowestLastResult );
                     if(lStream2.count() == 1) {
                         lEliminated = lPreviousResultsJustTiedCandidates.keySet().stream().filter(c -> lPreviousResultsJustTiedCandidates.get(c) == lLowestLastResult ).findFirst().get();

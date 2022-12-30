@@ -87,7 +87,7 @@ public class FirstPastThePost implements ElectoralMethod{
     @Override
     public void onSelectCandidate(MessageComponentInteraction pInteraction) {
         pInteraction.acknowledge();
-        Election lElection = elections.get(Integer.parseInt(pInteraction.getCustomId().substring(1)));
+        Election lElection = elections.get(Integer.parseInt(pInteraction.getCustomId().substring(2)));
         int i = 0;
         for(Voter lVoter: lElection.voters) {
             if(lVoter.userId == pInteraction.getUser().getId()) {
@@ -106,9 +106,11 @@ public class FirstPastThePost implements ElectoralMethod{
         Voter lVoter = pElection.voters.stream().filter(c->c.userId == pInteraction.getUser().getId()).findFirst().orElse(null);
         if(lVoter == null)
             return null;
+        if(lVoter.componentsSelection[0] == null) {
+            return null;
+        }
         lVotes.add(new Vote(lVoter.componentsSelection[0], 1));
-        Ballot lBallot = new Ballot(lVotes, pInteraction.getUser().getId());
-        return lBallot;
+        return new Ballot(lVotes, pInteraction.getUser().getId());
     }
     public int amountOfComponents(Election pElection) {
         return 1;

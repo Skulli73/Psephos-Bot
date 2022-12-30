@@ -2,6 +2,9 @@ package io.github.skulli73.main.objects;
 
 import io.github.skulli73.main.objects.electoralMethods.ElectoralMethod;
 import org.javacord.api.entity.message.Message;
+import org.javacord.api.entity.message.MessageBuilder;
+import org.javacord.api.entity.message.component.ActionRow;
+import org.javacord.api.entity.message.component.Button;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -39,5 +42,15 @@ public class Election {
         } catch (InterruptedException | ExecutionException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public MessageBuilder getBallot() {
+        MessageBuilder lMessageBuilder = electoralMethod.getBallot(this);
+        lMessageBuilder.addEmbed(electoralMethod.genericEmbed(this));
+        ActionRow lActionRow = ActionRow.of(
+                Button.success("b" + id, "Submit")
+        );
+        lMessageBuilder.addComponents(lActionRow);
+        return lMessageBuilder;
     }
 }
