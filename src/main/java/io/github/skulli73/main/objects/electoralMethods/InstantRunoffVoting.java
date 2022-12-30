@@ -87,29 +87,32 @@ public class InstantRunoffVoting implements ElectoralMethod{
                             lPreviousResultsJustTiedCandidates.put(lKey, lPreviousResult.get(lKey));
                     }
                     for(String lKey:lPreviousResult.keySet()) {
-                        if(lResults.get(lKey) != lowestVotes) {
+                        if(lResults.containsKey(lKey)) {
+                            if (lResults.get(lKey) != lowestVotes) {
+                                lPreviousResultsJustTiedCandidates.remove(lKey);
+                            }
+                        } else
                             lPreviousResultsJustTiedCandidates.remove(lKey);
-                        }
                     }
 
                     int lLowestLastResult = Collections.min(lPreviousResult.values());
                     Stream<String> lStream2 = lPreviousResultsJustTiedCandidates.keySet().stream().filter(c -> lPreviousResultsJustTiedCandidates.get(c) == lLowestLastResult );
                     if(lStream2.count() == 1) {
-                        lEliminated = lStream2.findFirst().get();
+                        lEliminated = lPreviousResultsJustTiedCandidates.keySet().stream().filter(c -> lPreviousResultsJustTiedCandidates.get(c) == lLowestLastResult ).findFirst().get();
                         lAddition = " due to having had the least votes in the previous round of all tied candidates";
                     } else {
-                        List lList = Arrays.asList(lStream2.toArray());
+                        Object[] lArray = lPreviousResultsJustTiedCandidates.keySet().stream().filter(c -> lPreviousResultsJustTiedCandidates.get(c) == lLowestLastResult ).toArray();
                         Random random = new Random();
-                        int index = random.nextInt(lList.size());
-                        lEliminated = (String)lList.get(index);
-                        lAddition = " due to being tied in having the least votes in the previous round of all tied candidates and being selected randomly.";
+                        int index = random.nextInt(lArray.length);
+                        lEliminated = (String)lArray[index];
+                        lAddition = " due to being tied in having the least votes in the previous round of all tied candidates and being selected randomly";
                     }
                 } else {
-                    Object[] lArray = lStream.toArray();
+                    Object[] lArray = pCandidates.stream().filter(c -> finalLResults.get(c) == lowestVotes).toArray();
                     Random random = new Random();
                     int index = random.nextInt(lArray.length);
                     lEliminated = (String)lArray[index];
-                    lAddition = " due to being tied in having the least votes in the previous round of all tied candidates and being selected randomly.";
+                    lAddition = " due to being selected randomly as this is the first round";
                 }
 
 

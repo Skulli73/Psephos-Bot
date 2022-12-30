@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="65d8bea3-32e9-44d8-b959-1ee696fd6ea9" name="Changes" comment="Path and gradle stuff">
+    <list default="true" id="65d8bea3-32e9-44d8-b959-1ee696fd6ea9" name="Changes" comment="Tie Breaking in IRV">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/io/github/skulli73/main/objects/electoralMethods/InstantRunoffVoting.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/skulli73/main/objects/electoralMethods/InstantRunoffVoting.java" afterDir="false" />
     </list>
@@ -178,7 +178,14 @@
       <option name="project" value="LOCAL" />
       <updated>1672341562792</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Tie Breaking in IRV">
+      <created>1672422914327</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1672422914327</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -201,7 +208,8 @@
     <MESSAGE value="FPTP now works" />
     <MESSAGE value="Added Instant Runoff Voting" />
     <MESSAGE value="Path and gradle stuff" />
-    <option name="LAST_COMMIT_MESSAGE" value="Path and gradle stuff" />
+    <MESSAGE value="Tie Breaking in IRV" />
+    <option name="LAST_COMMIT_MESSAGE" value="Tie Breaking in IRV" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
