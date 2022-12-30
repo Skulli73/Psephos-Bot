@@ -7,6 +7,7 @@ import org.javacord.api.entity.channel.TextChannel;
 import org.javacord.api.entity.message.MessageBuilder;
 import org.javacord.api.entity.message.component.ActionRow;
 import org.javacord.api.entity.message.component.Button;
+import org.javacord.api.entity.message.embed.EmbedBuilder;
 import org.javacord.api.entity.permission.Role;
 import org.javacord.api.entity.user.User;
 import org.javacord.api.interaction.MessageComponentInteraction;
@@ -32,9 +33,12 @@ public class StartElectionMessageComponent extends AbstractElectionMessageCompon
                 throw new RuntimeException(e);
             }
             try {
+                EmbedBuilder lEmbedBuilder = lElection.electoralMethod.genericEmbed(lElection);
+                lEmbedBuilder.setFooter(lElection.electoralMethod.methodName() + "\n" + lElection.ballots.size() + " people have voted.");
+
                 lElection.message = new MessageBuilder()
                         .append(discordApi.getRoleById(lElection.roleId).get().getMentionTag())
-                        .addEmbed(lElection.electoralMethod.genericEmbed(lElection))
+                        .addEmbed(lEmbedBuilder)
                         .addComponents(
                                 ActionRow.of(
                                         Button.success("u" + lElection.id, "Vote"),
@@ -47,7 +51,8 @@ public class StartElectionMessageComponent extends AbstractElectionMessageCompon
             } catch (InterruptedException | ExecutionException e) {
                 throw new RuntimeException(e);
             }
-
+            elections.put(lElection.id, lElection);
+            saveElections();
 
 
         } else

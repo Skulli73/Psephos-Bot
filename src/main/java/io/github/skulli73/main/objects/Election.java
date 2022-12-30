@@ -38,7 +38,7 @@ public class Election {
     public void updateMessage() {
         try {
             Message lMessage = discordApi.getMessageById(message, discordApi.getChannelById(channel).get().asTextChannel().get()).get();
-            lMessage.edit(electoralMethod.genericEmbed(this));
+            lMessage.edit(electoralMethod.genericEmbed(this).setFooter(electoralMethod.methodName()+"\n" + ballots.size() + " people have voted."));
         } catch (InterruptedException | ExecutionException e) {
             throw new RuntimeException(e);
         }

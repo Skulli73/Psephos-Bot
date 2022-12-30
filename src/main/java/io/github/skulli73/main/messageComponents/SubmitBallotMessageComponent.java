@@ -23,7 +23,7 @@ public class SubmitBallotMessageComponent {
                 pInteraction.createImmediateResponder().append("This is not a valid ballot.").respond();
             }
 
-
+            lElection.updateMessage();
         } else
             pInteraction.createImmediateResponder().append("This Election is already finished.").respond();
     }
