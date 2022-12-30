@@ -28,16 +28,14 @@ public class InstantRunoffVoting implements ElectoralMethod{
     public EmbedBuilder calculateWinner(List<Ballot> pBallots, List<String> pCandidates, int pAmountSeats) {
         Collections.shuffle(pCandidates);
         EmbedBuilder lEmbedBuilder = new EmbedBuilder();
-        HashMap<String, Integer> lResults;
+        HashMap<String, Integer> lResults = null;
+        HashMap<String, Integer> lPreviousResult;
         boolean end = false;
         int i = 0;
         while(!end) {
-            for(Ballot lBallot: pBallots) {
-                if(lBallot.votes.isEmpty()) {
-                    pBallots.remove(lBallot);
-                }
-            }
-
+            String lAddition = "";
+            pBallots.removeIf(lBallot -> lBallot.votes.isEmpty());
+            lPreviousResult = lResults;
             lResults = new HashMap<>();
             for(String lCandidate: pCandidates) {
                 lResults.put(lCandidate, 0);
@@ -74,11 +72,52 @@ public class InstantRunoffVoting implements ElectoralMethod{
                 lEmbedBuilder.addField("Result", lCandidates[0] + " has won this election, having reached more than 50% of left votes.");
                 end = true;
             } else {
-                String lEliminated = (String)lCandidates[lCandidates.length-1];
-                lResultRound.append(lEliminated).append(" was eliminated.");
+                String lEliminated = "";
+                String lLastRanked = (String)lCandidates[lCandidates.length-1];
+                int lowestVotes = lResults.get(lLastRanked);
+                HashMap<String, Integer> finalLResults = lResults;
+                Stream<String> lStream = pCandidates.stream().filter(c -> finalLResults.get(c) == lowestVotes);
+                boolean b = false;
+                if(lStream.count() == 1)
+                    lEliminated = lStream.findFirst().get();
+                else if(lPreviousResult != null){
+                    HashMap<String, Integer> lPreviousResultsJustTiedCandidates = new HashMap<>();
+                    for(String lKey:lPreviousResult.keySet()) {
+                        if(lResults.containsKey(lKey))
+                            lPreviousResultsJustTiedCandidates.put(lKey, lPreviousResult.get(lKey));
+                    }
+                    for(String lKey:lPreviousResult.keySet()) {
+                        if(lResults.get(lKey) != lowestVotes) {
+                            lPreviousResultsJustTiedCandidates.remove(lKey);
+                        }
+                    }
+
+                    int lLowestLastResult = Collections.min(lPreviousResult.values());
+                    Stream<String> lStream2 = lPreviousResultsJustTiedCandidates.keySet().stream().filter(c -> lPreviousResultsJustTiedCandidates.get(c) == lLowestLastResult );
+                    if(lStream2.count() == 1) {
+                        lEliminated = lStream2.findFirst().get();
+                        lAddition = " due to having had the least votes in the previous round of all tied candidates";
+                    } else {
+                        List lList = Arrays.asList(lStream2.toArray());
+                        Random random = new Random();
+                        int index = random.nextInt(lList.size());
+                        lEliminated = (String)lList.get(index);
+                        lAddition = " due to being tied in having the least votes in the previous round of all tied candidates and being selected randomly.";
+                    }
+                } else {
+                    Object[] lArray = lStream.toArray();
+                    Random random = new Random();
+                    int index = random.nextInt(lArray.length);
+                    lEliminated = (String)lArray[index];
+                    lAddition = " due to being tied in having the least votes in the previous round of all tied candidates and being selected randomly.";
+                }
+
+
+                lResultRound.append(lEliminated).append(" was eliminated").append(lAddition).append(".");
                 lEmbedBuilder.addField("Round " + (i+1), lResultRound.toString());
                 for(Ballot lBallot:pBallots) {
-                    lBallot.votes.removeIf(lVote -> Objects.equals(lVote.candidate, lEliminated));
+                    String finalLEliminated = lEliminated;
+                    lBallot.votes.removeIf(lVote -> Objects.equals(lVote.candidate, finalLEliminated));
                 }
                 pCandidates.remove(lEliminated);
             }
@@ -97,7 +136,7 @@ public class InstantRunoffVoting implements ElectoralMethod{
         MessageBuilder lMessageBuilder = new MessageBuilder();
         List<SelectMenuOption> lSelectMenuOptions = new LinkedList<>();
         for(String lCandidate:pElection.candidates) {
-            lSelectMenuOptions.add(SelectMenuOption.create(lCandidate, lCandidate.replaceAll(" ", "")));
+            lSelectMenuOptions.add(SelectMenuOption.create(lCandidate, lCandidate.replaceAll(" ", "_")));
         }
         int i = 0;
         for(String ignored:pElection.candidates) {
