@@ -11,7 +11,6 @@ import org.javacord.api.entity.message.component.SelectMenuOption;
 import org.javacord.api.entity.message.embed.EmbedBuilder;
 import org.javacord.api.interaction.MessageComponentInteraction;
 
-import java.net.BindException;
 import java.util.*;
 import java.util.stream.Stream;
 
@@ -61,14 +60,12 @@ public class InstantRunoffVoting implements ElectoralMethod{
                 j++;
             }
 
-            for(Object lCandidateObj: lCandidates) {
-                String lCandidate = (String) lCandidateObj;
-                lResultRound.append(lCandidate).append(": ").append(lResults.get(lCandidate)).append("\n");
-            }
+
 
 
 
             if(lResults.get((String)lCandidates[0]) > 0.5*pBallots.size()) {
+                addCandidatesStringBuilder(pBallots, lResults, lResultRound, lCandidates, "", true);
                 lEmbedBuilder.addField("Round " + (i+1), lResultRound.toString());
                 lEmbedBuilder.addField("Result", lCandidates[0] + " has won this election, having reached more than 50% of left votes.");
                 end = true;
@@ -116,6 +113,7 @@ public class InstantRunoffVoting implements ElectoralMethod{
                     lAddition = " due to being selected randomly as this is the first round";
                 }
 
+                addCandidatesStringBuilder(pBallots, lResults, lResultRound, lCandidates, lEliminated, false);
 
                 lResultRound.append(lEliminated).append(" was eliminated").append(lAddition).append(".");
                 lEmbedBuilder.addField("Round " + (i+1), lResultRound.toString());
@@ -125,9 +123,39 @@ public class InstantRunoffVoting implements ElectoralMethod{
                 }
                 pCandidates.remove(lEliminated);
             }
+
+
             i++;
         }
         return lEmbedBuilder;
+    }
+
+    private void addCandidatesStringBuilder(List<Ballot> pBallots, HashMap<String, Integer> lResults, StringBuilder lResultRound, Object[] lCandidates, String lEliminated, boolean b) {
+        int i = 0;
+        for(Object lCandidateObj: lCandidates) {
+            String lCandidate = (String) lCandidateObj;
+            lResultRound.append(lCandidate).append(": ").append(lResults.get(lCandidate)).append("\n");
+            String lBarSymbol;
+            if(Objects.equals(lCandidate, lEliminated))
+                lBarSymbol = ":red_square:";
+            else if(b && i == 0) {
+                lBarSymbol = ":green_square:";
+            }
+            else {
+                lBarSymbol = ":black_large_square:";
+            }
+            int lPercentage  = (int) (((double) lResults.get(lCandidate))/ pBallots.size()*100);
+            StringBuilder lBar  = new StringBuilder();
+            int lAmountBar  = lPercentage/10;
+            for(int k = 0; k<10; k++) {
+                if(k<lAmountBar)
+                    lBar.append(lBarSymbol);
+                else
+                    lBar.append(":white_large_square:");
+            }
+            lResultRound.append(lBar).append("\n");
+            i++;
+        }
     }
 
     @Override

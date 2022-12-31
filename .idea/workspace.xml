@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="65d8bea3-32e9-44d8-b959-1ee696fd6ea9" name="Changes" comment="Made the bot not dm everyone but rather ping everyone and people then get the ballot by clicking a button and fixed some stuff.">
+    <list default="true" id="65d8bea3-32e9-44d8-b959-1ee696fd6ea9" name="Changes" comment="Made it so it shows how many people voted.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/skulli73/main/messageComponents/StartElectionMessageComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/skulli73/main/messageComponents/StartElectionMessageComponent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/skulli73/main/messageComponents/SubmitBallotMessageComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/skulli73/main/messageComponents/SubmitBallotMessageComponent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/skulli73/main/objects/Election.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/skulli73/main/objects/Election.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/skulli73/main/objects/electoralMethods/InstantRunoffVoting.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/skulli73/main/objects/electoralMethods/InstantRunoffVoting.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -204,7 +202,14 @@
       <option name="project" value="LOCAL" />
       <updated>1672428325548</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Made it so it shows how many people voted.">
+      <created>1672430831293</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1672430831293</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -230,7 +235,8 @@
     <MESSAGE value="Tie Breaking in IRV" />
     <MESSAGE value="Fixed Tie Breaking" />
     <MESSAGE value="Made the bot not dm everyone but rather ping everyone and people then get the ballot by clicking a button and fixed some stuff." />
-    <option name="LAST_COMMIT_MESSAGE" value="Made the bot not dm everyone but rather ping everyone and people then get the ballot by clicking a button and fixed some stuff." />
+    <MESSAGE value="Made it so it shows how many people voted." />
+    <option name="LAST_COMMIT_MESSAGE" value="Made it so it shows how many people voted." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
