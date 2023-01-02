@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="65d8bea3-32e9-44d8-b959-1ee696fd6ea9" name="Changes" comment="Made it so it shows how many people voted.">
+    <list default="true" id="65d8bea3-32e9-44d8-b959-1ee696fd6ea9" name="Changes" comment="Made the bar green for IRV if someone wins the election and red if someone is eliminated">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/skulli73/main/objects/electoralMethods/InstantRunoffVoting.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/skulli73/main/objects/electoralMethods/InstantRunoffVoting.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/skulli73/main/messageComponents/VoteMessageComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/skulli73/main/messageComponents/VoteMessageComponent.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -209,7 +209,14 @@
       <option name="project" value="LOCAL" />
       <updated>1672430831293</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Made the bar green for IRV if someone wins the election and red if someone is eliminated">
+      <created>1672500151538</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1672500151538</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -236,7 +243,8 @@
     <MESSAGE value="Fixed Tie Breaking" />
     <MESSAGE value="Made the bot not dm everyone but rather ping everyone and people then get the ballot by clicking a button and fixed some stuff." />
     <MESSAGE value="Made it so it shows how many people voted." />
-    <option name="LAST_COMMIT_MESSAGE" value="Made it so it shows how many people voted." />
+    <MESSAGE value="Made the bar green for IRV if someone wins the election and red if someone is eliminated" />
+    <option name="LAST_COMMIT_MESSAGE" value="Made the bar green for IRV if someone wins the election and red if someone is eliminated" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
