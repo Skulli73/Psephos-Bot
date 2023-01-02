@@ -12,6 +12,7 @@ import org.javacord.api.entity.message.embed.EmbedBuilder;
 import org.javacord.api.interaction.MessageComponentInteraction;
 
 import java.util.*;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Stream;
 
 import static io.github.skulli73.main.MainPsephos.elections;
@@ -32,9 +33,16 @@ public class InstantRunoffVoting implements ElectoralMethod{
         HashMap<String, Integer> lPreviousResult;
         boolean end = false;
         int i = 0;
+        AtomicInteger lAmountEmptyBallots = new AtomicInteger();
         while(!end) {
             String lAddition = "";
-            pBallots.removeIf(lBallot -> lBallot.votes.isEmpty());
+            pBallots.removeIf(lBallot -> {
+                boolean remove = lBallot.votes.isEmpty();
+                if (remove) {
+                    lAmountEmptyBallots.getAndIncrement();
+                }
+                return remove;
+            });
             lPreviousResult = lResults;
             lResults = new HashMap<>();
             for(String lCandidate: pCandidates) {
@@ -66,6 +74,7 @@ public class InstantRunoffVoting implements ElectoralMethod{
 
             if(lResults.get((String)lCandidates[0]) > 0.5*pBallots.size()) {
                 addCandidatesStringBuilder(pBallots, lResults, lResultRound, lCandidates, "", true);
+                lResultRound.append("Blank: ").append(lAmountEmptyBallots.get()).append("\n");
                 lEmbedBuilder.addField("Round " + (i+1), lResultRound.toString());
                 lEmbedBuilder.addField("Result", lCandidates[0] + " has won this election, having reached more than 50% of left votes.");
                 end = true;
@@ -114,6 +123,8 @@ public class InstantRunoffVoting implements ElectoralMethod{
                 }
 
                 addCandidatesStringBuilder(pBallots, lResults, lResultRound, lCandidates, lEliminated, false);
+
+                lResultRound.append("Blank: ").append(lAmountEmptyBallots.get()).append("\n");
 
                 lResultRound.append(lEliminated).append(" was eliminated").append(lAddition).append(".");
                 lEmbedBuilder.addField("Round " + (i+1), lResultRound.toString());
