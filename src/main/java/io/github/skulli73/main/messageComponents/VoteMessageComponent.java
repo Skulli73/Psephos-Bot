@@ -10,6 +10,7 @@ import org.javacord.api.entity.permission.Role;
 import org.javacord.api.entity.user.User;
 import org.javacord.api.interaction.MessageComponentInteraction;
 
+import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.CompletableFuture;
@@ -40,16 +41,23 @@ public class VoteMessageComponent {
             return;
         }
 
-        MessageBuilder lMessageBuilder = lElection.getBallot();
+        List<MessageBuilder> lMessageBuilder = lElection.getBallot();
         try{
             ScheduledThreadPoolExecutor executor = new ScheduledThreadPoolExecutor(1);
 
             PrivateChannel lDmChannel = lUser.openPrivateChannel().get();
-            CompletableFuture<Message> lFuture = lMessageBuilder.send(lDmChannel);
+            CompletableFuture<Message> lFuture = lMessageBuilder.get(0).send(lDmChannel);
             lFuture.thenAccept(c -> {
                 if (c != null) {
                     lElection.voters.add(new Voter(lUser.getId(), lElection.electoralMethod.amountOfComponents(lElection)));
                     elections.put(lElection.id, lElection);
+                    int i = 0;
+                    for(MessageBuilder lMessageBuilder2: lMessageBuilder) {
+                        if(i!=0) {
+                            lMessageBuilder2.send(lDmChannel);
+                        }
+                        i++;
+                    }
                     saveElections();
                     pInteraction.acknowledge();
                 }

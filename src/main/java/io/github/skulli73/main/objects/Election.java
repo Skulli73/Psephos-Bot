@@ -44,13 +44,13 @@ public class Election {
         }
     }
 
-    public MessageBuilder getBallot() {
-        MessageBuilder lMessageBuilder = electoralMethod.getBallot(this);
-        lMessageBuilder.addEmbed(electoralMethod.genericEmbed(this));
+    public List<MessageBuilder> getBallot() {
+        List<MessageBuilder> lMessageBuilder = electoralMethod.getBallot(this);
+        lMessageBuilder.get(0).addEmbed(electoralMethod.genericEmbed(this));
         ActionRow lActionRow = ActionRow.of(
                 Button.success("b" + id, "Submit")
         );
-        lMessageBuilder.addComponents(lActionRow);
+        lMessageBuilder.get(lMessageBuilder.size()-1).addComponents(lActionRow);
         return lMessageBuilder;
     }
 }

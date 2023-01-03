@@ -70,7 +70,7 @@ public class FirstPastThePost implements ElectoralMethod{
         return "First Past the Post";
     }
 
-    public MessageBuilder getBallot(Election pElection) {
+    public List<MessageBuilder> getBallot(Election pElection) {
         MessageBuilder lMessageBuilder = new MessageBuilder();
         List<SelectMenuOption> lSelectMenuOptions = new LinkedList<>();
         for(String lCandidate:pElection.candidates) {
@@ -81,7 +81,7 @@ public class FirstPastThePost implements ElectoralMethod{
                         SelectMenu.create("v_" + pElection.id, "Your Vote", lSelectMenuOptions)
                 )
         );
-        return lMessageBuilder;
+        return Collections.singletonList(lMessageBuilder);
     }
 
     @Override
@@ -114,5 +114,30 @@ public class FirstPastThePost implements ElectoralMethod{
     }
     public int amountOfComponents(Election pElection) {
         return 1;
+    }
+
+    public String getBltFile(List<Ballot> pBallots, List<String> pCandidates, String pName) {
+        StringBuilder lStringBuilder = new StringBuilder();
+        lStringBuilder.append(pCandidates.size()).append(" ").append(1).append("\n");
+        for(Ballot lBallot:pBallots) {
+            lStringBuilder.append("1 ");
+            for(Vote lVote:lBallot.votes) {
+                lStringBuilder.append(lVote.candidate).append(" ");
+            }
+            lStringBuilder.append("0").append("\n");
+        }
+        lStringBuilder.append("0").append("\n");
+
+        String lResult = lStringBuilder.toString();
+        int i = 1;
+        for(String lCandidate:pCandidates) {
+            lResult = lResult.replaceAll(lCandidate, String.valueOf(i));
+            lResult = lResult + "\"" + lCandidate + "\"\n";
+            i++;
+        }
+
+        lResult = lResult + "\"" + pName + "\"";
+
+        return lResult;
     }
 }

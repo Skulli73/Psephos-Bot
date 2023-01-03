@@ -27,11 +27,13 @@ public interface ElectoralMethod {
         return lEmbedBuilder;
     }
 
-    public MessageBuilder getBallot(Election pElection);
+    public List<MessageBuilder> getBallot(Election pElection);
 
     public void onSelectCandidate(MessageComponentInteraction pInteraction);
 
     public Ballot handleBallot(MessageComponentInteraction pInteraction, Election pElection);
 
     public int amountOfComponents(Election pElection);
+
+    public String getBltFile(List<Ballot> pBallots, List<String> pCandidates, String pName);
 }

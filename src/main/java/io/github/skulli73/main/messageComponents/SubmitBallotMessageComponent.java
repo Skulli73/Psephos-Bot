@@ -12,11 +12,14 @@ public class SubmitBallotMessageComponent {
         int lElectionId = Integer.parseInt(pInteraction.getCustomId().substring(1));
         if(elections.containsKey(lElectionId)) {
             Election lElection = elections.get(lElectionId);
-            Ballot lBallot = lElection.electoralMethod.handleBallot(pInteraction, lElection);
+            if(lElection.ballots.stream().anyMatch(c -> c.voterId == pInteraction.getUser().getId())) {
+                pInteraction.createImmediateResponder().append("You already voted").respond();
+                return;
+            }
+             Ballot lBallot = lElection.electoralMethod.handleBallot(pInteraction, lElection);
             if(lBallot != null) {
                 lElection.ballots.add(lBallot);
                 pInteraction.createImmediateResponder().append("Your vote was registered.").respond();
-                pInteraction.getMessage().delete();
                 elections.put(lElection.id, lElection);
                 saveElections();
             } else {

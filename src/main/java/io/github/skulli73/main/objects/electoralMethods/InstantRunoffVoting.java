@@ -27,6 +27,8 @@ public class InstantRunoffVoting implements ElectoralMethod{
 
     @Override
     public EmbedBuilder calculateWinner(List<Ballot> pBallots, List<String> pCandidates, int pAmountSeats) {
+
+
         Collections.shuffle(pCandidates);
         EmbedBuilder lEmbedBuilder = new EmbedBuilder();
         HashMap<String, Integer> lResults = null;
@@ -175,15 +177,19 @@ public class InstantRunoffVoting implements ElectoralMethod{
     }
 
     @Override
-    public MessageBuilder getBallot(Election pElection) {
-        MessageBuilder lMessageBuilder = new MessageBuilder();
+    public List<MessageBuilder> getBallot(Election pElection) {
+        List<MessageBuilder> lMessageBuilder = new LinkedList<>();
         List<SelectMenuOption> lSelectMenuOptions = new LinkedList<>();
+        for(int i = 0; i<Math.ceil(((double)pElection.candidates.size())/4); i++) {
+            lMessageBuilder.add(new MessageBuilder());
+        }
         for(String lCandidate:pElection.candidates) {
             lSelectMenuOptions.add(SelectMenuOption.create(lCandidate, lCandidate.replaceAll(" ", "_")));
         }
         int i = 0;
         for(String ignored:pElection.candidates) {
-            lMessageBuilder.addComponents(
+            int lIndex = (int) Math.floor(((double)i)/4);
+            lMessageBuilder.get(lIndex).addComponents(
                     ActionRow.of(
                             SelectMenu.create("v" + i + "_" + pElection.id, "Rank " + (i+1), lSelectMenuOptions)
                     )
@@ -237,5 +243,30 @@ public class InstantRunoffVoting implements ElectoralMethod{
     }
     public int amountOfComponents(Election pElection) {
         return pElection.candidates.size();
+    }
+
+    public String getBltFile(List<Ballot> pBallots, List<String> pCandidates, String pName) {
+        StringBuilder lStringBuilder = new StringBuilder();
+        lStringBuilder.append(pCandidates.size()).append(" ").append(1).append("\n");
+        for(Ballot lBallot:pBallots) {
+            lStringBuilder.append("1 ");
+            for(Vote lVote:lBallot.votes) {
+                lStringBuilder.append(lVote.candidate).append(" ");
+            }
+            lStringBuilder.append("0").append("\n");
+        }
+        lStringBuilder.append("0").append("\n");
+
+        String lResult = lStringBuilder.toString();
+        int i = 1;
+        for(String lCandidate:pCandidates) {
+            lResult = lResult.replaceAll(lCandidate, String.valueOf(i));
+            lResult = lResult + "\"" + lCandidate + "\"\n";
+            i++;
+        }
+
+        lResult = lResult + "\"" + pName + "\"";
+
+        return lResult;
     }
 }
