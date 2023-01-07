@@ -19,7 +19,16 @@ public class SlashCommandManager {
                     )),
                     SlashCommandOption.create(SlashCommandOptionType.ROLE, "voting_role", "Role needed to vote in the election", true),
                     SlashCommandOption.create(SlashCommandOptionType.STRING, "name", "Name of the Election", true)
-                ))
+                )),
+                SlashCommandOption.createWithOptions(SlashCommandOptionType.SUB_COMMAND, "no_calculation", "Elections where no results are calculated.", Arrays.asList(
+                    SlashCommandOption.createWithChoices(SlashCommandOptionType.STRING, "electoral_method", "Method used for the election", true, Arrays.asList(
+                            SlashCommandOptionChoice.create("ranked_choice", "rc")
+                        )),
+                        SlashCommandOption.create(SlashCommandOptionType.ROLE, "voting_role", "Role needed to vote in the election", true),
+                        SlashCommandOption.create(SlashCommandOptionType.STRING, "name", "Name of the Election", true)
+                    )
+                )
+
         ))
                 .setDefaultEnabledForPermissions(PermissionType.MANAGE_CHANNELS, PermissionType.ADMINISTRATOR)
                 .setEnabledInDms(false)

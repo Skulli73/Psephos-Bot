@@ -46,9 +46,11 @@ public class EndElectionMessageComponent extends AbstractElectionMessageComponen
         lMessageBuilder.addAttachment(lFile);
         lMessageBuilder.send(lChannel);
         EmbedBuilder lEmbedBuilder          = lElection.electoralMethod.calculateWinner(lElection.ballots, lElection.candidates, 1);
-        lEmbedBuilder.setTitle(lElection.title + " - Results");
-        lEmbedBuilder.setFooter(lElection.electoralMethod.methodName());
-        lChannel.sendMessage(lEmbedBuilder);
+        if(lEmbedBuilder != null) {
+            lEmbedBuilder.setTitle(lElection.title + " - Results");
+            lEmbedBuilder.setFooter(lElection.electoralMethod.methodName());
+            lChannel.sendMessage(lEmbedBuilder);
+        }
         elections.remove(lElection.id);
         saveElections();
 
