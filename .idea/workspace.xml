@@ -5,13 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="65d8bea3-32e9-44d8-b959-1ee696fd6ea9" name="Changes" comment="Made the bar green for IRV if someone wins the election and red if someone is eliminated">
-      <change afterPath="$PROJECT_DIR$/src/main/java/io/github/skulli73/main/commands/StartElectionCommands/RCElectionCommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/io/github/skulli73/main/objects/electoralMethods/NoCalculationRanked.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/io/github/skulli73/main/commands/StartElectionCommands/ApprovalElectionCommand.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/io/github/skulli73/main/objects/electoralMethods/AbstractElectionRankedOrApproval.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/io/github/skulli73/main/objects/electoralMethods/ApprovalVoting.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/io/github/skulli73/main/commands/StartElectionCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/skulli73/main/commands/StartElectionCommand.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/io/github/skulli73/main/managers/SlashCommandManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/skulli73/main/managers/SlashCommandManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/skulli73/main/messageComponents/EndElectionMessageComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/skulli73/main/messageComponents/EndElectionMessageComponent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/skulli73/main/objects/electoralMethods/InstantRunoffVoting.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/skulli73/main/objects/electoralMethods/InstantRunoffVoting.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/skulli73/main/objects/electoralMethods/NoCalculationRanked.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/skulli73/main/objects/electoralMethods/NoCalculationRanked.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

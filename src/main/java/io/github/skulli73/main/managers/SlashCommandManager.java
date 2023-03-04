@@ -15,7 +15,8 @@ public class SlashCommandManager {
                 SlashCommandOption.createWithOptions(SlashCommandOptionType.SUB_COMMAND, "single_winner", "Elections with a single winner.", Arrays.asList(
                     SlashCommandOption.createWithChoices(SlashCommandOptionType.STRING, "electoral_method", "Method used for the election", true, Arrays.asList(
                             SlashCommandOptionChoice.create("first_past_the_post", "fptp"),
-                            SlashCommandOptionChoice.create("instant_runoff_voting", "irv")
+                            SlashCommandOptionChoice.create("instant_runoff_voting", "irv"),
+                            SlashCommandOptionChoice.create("approval_voting", "approval")
                     )),
                     SlashCommandOption.create(SlashCommandOptionType.ROLE, "voting_role", "Role needed to vote in the election", true),
                     SlashCommandOption.create(SlashCommandOptionType.STRING, "name", "Name of the Election", true)
