@@ -22,6 +22,7 @@ public class Election {
     public List<Ballot>     ballots;
     public long             message;
     public long             channel;
+    public long             server;
     public long             creator;
     public List<Voter>      voters;
 

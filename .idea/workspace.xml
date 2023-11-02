@@ -7,7 +7,11 @@
     <list default="true" id="65d8bea3-32e9-44d8-b959-1ee696fd6ea9" name="Changes" comment="Added Approval Voting">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/skulli73/main/commands/StartElectionCommands/AbstractElectionCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/skulli73/main/commands/StartElectionCommands/AbstractElectionCommand.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/io/github/skulli73/main/messageComponents/AbortElectionMessageComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/skulli73/main/messageComponents/AbortElectionMessageComponent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/skulli73/main/messageComponents/SubmitBallotMessageComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/skulli73/main/messageComponents/SubmitBallotMessageComponent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/skulli73/main/objects/Election.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/skulli73/main/objects/Election.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/skulli73/main/objects/Vote.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/skulli73/main/objects/Vote.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,7 +91,7 @@
       <recent name="io.github.skulli73.main.objects" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.Psephos [shadowJar]">
+  <component name="RunManager" selected="Application.MainPsephos">
     <configuration name="MainPsephos" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="io.github.skulli73.main.MainPsephos" />
       <module name="Psephos.main" />
@@ -228,7 +232,14 @@
       <option name="project" value="LOCAL" />
       <updated>1677924568776</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Added Approval Voting">
+      <created>1698940175208</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1698940175208</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

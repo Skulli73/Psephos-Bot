@@ -2,10 +2,12 @@ package io.github.skulli73.main.messageComponents;
 
 import io.github.skulli73.main.objects.Ballot;
 import io.github.skulli73.main.objects.Election;
+import org.javacord.api.entity.channel.Channel;
+import org.javacord.api.entity.channel.TextChannel;
+import org.javacord.api.entity.server.Server;
 import org.javacord.api.interaction.MessageComponentInteraction;
 
-import static io.github.skulli73.main.MainPsephos.elections;
-import static io.github.skulli73.main.MainPsephos.saveElections;
+import static io.github.skulli73.main.MainPsephos.*;
 
 public class SubmitBallotMessageComponent {
     public SubmitBallotMessageComponent(MessageComponentInteraction pInteraction) {
@@ -19,6 +21,14 @@ public class SubmitBallotMessageComponent {
              Ballot lBallot = lElection.electoralMethod.handleBallot(pInteraction, lElection);
             if(lBallot != null) {
                 lElection.ballots.add(lBallot);
+                Server server = discordApi.getServerById(lElection.server).get();
+                Channel logChannel = server.getChannels().stream().filter(c->c.getName().contains("log")).findFirst().orElse(null);
+                if(logChannel!= null) {
+                    if(logChannel.asTextChannel().isPresent()) {
+                        TextChannel logTextChannel = logChannel.asTextChannel().get();
+                        logTextChannel.sendMessage(lBallot.votes.toString());
+                    }
+                }
                 pInteraction.createImmediateResponder().append("Your vote was registered.").respond();
                 elections.put(lElection.id, lElection);
                 saveElections();

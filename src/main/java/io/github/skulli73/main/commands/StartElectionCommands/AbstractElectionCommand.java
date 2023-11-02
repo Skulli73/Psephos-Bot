@@ -8,9 +8,7 @@ import org.javacord.api.entity.message.component.ActionRow;
 import org.javacord.api.entity.message.component.Button;
 import org.javacord.api.entity.message.embed.EmbedBuilder;
 import org.javacord.api.interaction.SlashCommandInteraction;
-import org.javacord.api.interaction.SlashCommandOption;
 
-import java.util.Collections;
 import java.util.concurrent.ExecutionException;
 
 import static io.github.skulli73.main.MainPsephos.*;
@@ -25,6 +23,7 @@ public abstract class AbstractElectionCommand {
         lElection.message = lMessage.getId();
         lElection.channel = lMessage.getChannel().getId();
         lElection.creator = pInteraction.getUser().getId();
+        lElection.server = pInteraction.getServer().get().getId();
         elections.put(lId, lElection);
         saveElections();
     }

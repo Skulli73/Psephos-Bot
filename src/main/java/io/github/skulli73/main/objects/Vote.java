@@ -8,4 +8,8 @@ public class Vote {
         candidate       = pCandidate;
         amountVotes     = pAmountVotes;
     }
+
+    public String toString() {
+        return candidate + ": " + amountVotes;
+    }
 }

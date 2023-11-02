@@ -1,8 +1,7 @@
 package io.github.skulli73.main.messageComponents;
 
 import io.github.skulli73.main.objects.Election;
-import org.javacord.javacord.interaction.MessageComponentInteraction;
-import org.javacord.api.interaction.SlashCommandInteraction;
+import org.javacord.api.interaction.MessageComponentInteraction;
 
 import java.util.concurrent.ExecutionException;
 
