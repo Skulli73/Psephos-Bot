@@ -4,19 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="65d8bea3-32e9-44d8-b959-1ee696fd6ea9" name="Changes" comment="Made the bar green for IRV if someone wins the election and red if someone is eliminated">
-      <change afterPath="$PROJECT_DIR$/src/main/java/io/github/skulli73/main/commands/StartElectionCommands/ApprovalElectionCommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/io/github/skulli73/main/objects/electoralMethods/AbstractElectionRankedOrApproval.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/io/github/skulli73/main/objects/electoralMethods/ApprovalVoting.java" afterDir="false" />
+    <list default="true" id="65d8bea3-32e9-44d8-b959-1ee696fd6ea9" name="Changes" comment="Added Approval Voting">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/skulli73/main/commands/StartElectionCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/skulli73/main/commands/StartElectionCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/skulli73/main/managers/SlashCommandManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/skulli73/main/managers/SlashCommandManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/skulli73/main/objects/electoralMethods/NoCalculationRanked.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/skulli73/main/objects/electoralMethods/NoCalculationRanked.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/skulli73/main/messageComponents/AbortElectionMessageComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/skulli73/main/messageComponents/AbortElectionMessageComponent.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeInsightWorkspaceSettings">
+    <option name="optimizeImportsOnTheFly" value="true" />
   </component>
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
@@ -88,7 +87,7 @@
       <recent name="io.github.skulli73.main.objects" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.MainPsephos">
+  <component name="RunManager" selected="Gradle.Psephos [shadowJar]">
     <configuration name="MainPsephos" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="io.github.skulli73.main.MainPsephos" />
       <module name="Psephos.main" />
@@ -222,7 +221,14 @@
       <option name="project" value="LOCAL" />
       <updated>1672500151538</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Added Approval Voting">
+      <created>1677924568776</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1677924568776</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -250,7 +256,8 @@
     <MESSAGE value="Made the bot not dm everyone but rather ping everyone and people then get the ballot by clicking a button and fixed some stuff." />
     <MESSAGE value="Made it so it shows how many people voted." />
     <MESSAGE value="Made the bar green for IRV if someone wins the election and red if someone is eliminated" />
-    <option name="LAST_COMMIT_MESSAGE" value="Made the bar green for IRV if someone wins the election and red if someone is eliminated" />
+    <MESSAGE value="Added Approval Voting" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added Approval Voting" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
